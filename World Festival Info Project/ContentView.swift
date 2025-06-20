@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TextField("검색어를 입력하세요.", text: $searchText)
+            TextField("페스티벌을 검색해주세요.", text: $searchText)
                 .padding(10)
                 .background(Color(.systemGray4))
                 .cornerRadius(8)
