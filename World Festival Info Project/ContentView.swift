@@ -22,19 +22,17 @@ struct ContentView: View {
                 .multilineTextAlignment(.leading)
                     // 텍스트를 왼쪽 정렬
 
-            Text("검색어: \(searchText)")
+            Text(" \(searchText)")
                 .frame(maxWidth: .infinity)
                     // 가로를 꽉 채워서
                 .multilineTextAlignment(.center)
                     // 텍스트를 가운데 정렬
-            
-            Spacer()
-        }
-        VStack(alignment: .center) {
+
             Text("World Festival")
                 .font(.largeTitle)
-                .padding()
+                .padding(-10)
                 // 텍스트가 너무 위에 딱 붙지 않게 여백 줌
+                .frame(maxWidth: .infinity)
             Spacer()
                 // 아래에 공간을 만들어서 Text를 위로 밀어줌
         }
