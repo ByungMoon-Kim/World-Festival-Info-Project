@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct WdjfSearchView: View {
-    var Wdjf : String
+    var wdjf : String
     
     var body : some View {
         VStack {
-            Text("'\(Wdjf)'에 대한 검색 결과")
+            Text("'\(wdjf)'에 대한 검색 결과")
                 .font(.headline)
                 .padding()
         }

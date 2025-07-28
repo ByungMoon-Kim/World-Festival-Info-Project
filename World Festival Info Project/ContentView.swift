@@ -10,34 +10,46 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var searchText = ""
+    @State private var isSearching = false
+    // 검색 활성화
     
     var body: some View {
-        VStack(alignment: .leading) {
-            TextField("페스티벌을 검색해주세요.", text: $searchText)
-                .padding(10)
-                .background(Color(.systemGray4))
-                .cornerRadius(8)
-                .padding([.top, .horizontal])
-                    // 검색창이 화면 위에 붙지 않게 여백 주기
-                .multilineTextAlignment(.leading)
-                    // 텍스트를 왼쪽 정렬
-
-            Text(" \(searchText)")
-                .frame(maxWidth: .infinity)
-                    // 가로를 꽉 채워서
-                .multilineTextAlignment(.center)
-                    // 텍스트를 가운데 정렬
-
-            Text("World Festival")
-                .font(.largeTitle)
-                .padding(-10)
+        NavigationStack {
+            VStack(alignment: .leading) {
+                TextField("페스티벌을 검색해주세요.", text: $searchText)
+                    .padding(10)
+                    .background(Color(.systemGray4))
+                    .cornerRadius(8)
+                    .padding([.top, .horizontal])
+                // 검색창이 화면 위에 붙지 않게 여백 주기
+                    .multilineTextAlignment(.leading)
+                // 텍스트를 왼쪽 정렬
+                Button("검색") {
+                    if !searchText.isEmpty {
+                        isSearching = true
+                    }
+                }
+                
+                Text(" \(searchText)")
+                    .frame(maxWidth: .infinity)
+                // 가로를 꽉 채워서
+                    .multilineTextAlignment(.center)
+                // 텍스트를 가운데 정렬
+                
+                Text("World Festival")
+                    .font(.largeTitle)
+                    .padding(-10)
                 // 텍스트가 너무 위에 딱 붙지 않게 여백 줌
-                .frame(maxWidth: .infinity)
-            Spacer()
+                    .frame(maxWidth: .infinity)
+                Spacer()
                 // 아래에 공간을 만들어서 Text를 위로 밀어줌
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .background(Color.white)
+            .navigationDestination(isPresented: $isSearching) {
+                WdjfSearchView(wdjf: searchText)
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.white)
     }
 }
 
